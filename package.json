@@ -1,0 +1,25 @@
+{
+  "name": "address-geocoding",
+  "version": "1.0.0",
+  "description": "Ambyint Interview Technical Challenge for Albert Chu",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albchu/address-geocode-exercise.git"
+  },
+  "keywords": [
+    "address",
+    "geocode",
+    "decrypt"
+  ],
+  "author": "Albert Chu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/albchu/address-geocode-exercise/issues"
+  },
+  "homepage": "https://github.com/albchu/address-geocode-exercise#readme"
+}
