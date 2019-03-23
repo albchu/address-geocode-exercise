@@ -1,7 +1,8 @@
 ## Javascript Exercise
 
 #### Description
-The purpose of this assignment is for us to understand how you design and develop your code.  Once submitted we will go through a typical code review with members of our development team which will help serve as a tool for discussion during the team interview.
+
+The purpose of this assignment is for us to understand how you design and develop your code. Once submitted we will go through a typical code review with members of our development team which will help serve as a tool for discussion during the team interview.
 
 Keep in mind best practices, readability, testing and extensibility
 
@@ -26,9 +27,11 @@ CITY: 30
 STATE: 2
 ZIP: 12
 ```
+
 **NOTE** - A full address is formed in the same order of the parts listed above.
 
 #### Submission Instructions
+
 - Clone this repository and commit your changes locally (or to a separate remote repository)
 - Inform us of the Node version you used
 - You're free to use any packages or libraries which help you to complete these tasks
