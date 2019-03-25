@@ -1,19 +1,67 @@
-const print = line => console.log(`${line}\n`);
+import { isValidPosition, getDirectionAtOffset, isWinCondition } from "./state";
 
-export const processLandCmd = () => print("Ya landed");
-export const processMoveCmd = (gameState, moveUnits = 0) => {
-  print("Move plz!", moveUnits);
-  gameState.move = moveUnits;
+export const processLandCmd = gameState => {
+  gameState.hasLanded = true;
+  processReportCmd(gameState);
 };
-export const processLeftCmd = () => print("Turn left");
-export const processRightCmd = () => print("Turn right");
 
-export const processReportCmd = ({ position, direction, kenobi }) =>
-  print(
-    `R2D2 is at ${position.x},${
-      position.y
-    } facing ${direction}\nObi Wan Kenobi is at ${kenobi.x},${kenobi.y}`
-  );
+export const processMoveCmd = (
+  { direction, position, hasLanded },
+  moveUnits = 0
+) => {
+  if (hasLanded) {
+    let newPosition;
+    const moveNum = parseInt(moveUnits);
+    switch (direction) {
+      case "North":
+        newPosition = position.y + moveNum;
+        if (isValidPosition(newPosition)) {
+          position.y = newPosition;
+        }
+        break;
+      case "South":
+        newPosition = position.y - moveNum;
+        if (isValidPosition(newPosition)) {
+          position.y = newPosition;
+        }
+        break;
+      case "East":
+        newPosition = position.x + moveNum;
+        if (isValidPosition(newPosition)) {
+          position.x = newPosition;
+        }
+        break;
+      case "West":
+        newPosition = position.x - moveNum;
+        if (isValidPosition(newPosition)) {
+          position.x = newPosition;
+        }
+        break;
+    }
+  } else
+    console.log("R2-D2 tries to move before landing. It's not very effective.");
+};
+
+export const processLeftCmd = gameState => {
+  gameState.direction = getDirectionAtOffset(gameState.direction, -1);
+};
+
+export const processRightCmd = gameState => {
+  gameState.direction = getDirectionAtOffset(gameState.direction, 1);
+};
+export const processReportCmd = ({
+  position,
+  direction,
+  kenobi,
+  hasLanded
+}) => {
+  const r2Report = hasLanded
+    ? `R2-D2 is at ${position.x},${position.y} facing ${direction}`
+    : "R2-D2 has not landed yet";
+
+  console.log(r2Report);
+  console.log(`Obi Wan Kenobi is at ${kenobi.x},${kenobi.y}`);
+};
 
 export const processCommand = gameState => line => {
   if (line.length === 0) return; // No input, no problem
@@ -36,4 +84,9 @@ export const processCommand = gameState => line => {
       processReportCmd(gameState);
       break;
   }
+  if (isWinCondition(gameState)) {
+    console.log("Congratulations, you've saved the Rebellion!");
+    process.exit();
+  }
+  console.log();
 };
