@@ -1,14 +1,11 @@
 import { isValidPosition, getDirectionAtOffset, isWinCondition } from "./state";
 
-export const processLandCmd = gameState => {
+const processLandCmd = gameState => {
   gameState.hasLanded = true;
   processReportCmd(gameState);
 };
 
-export const processMoveCmd = (
-  { direction, position, hasLanded },
-  moveUnits = 0
-) => {
+const processMoveCmd = ({ direction, position, hasLanded }, moveUnits = 0) => {
   if (hasLanded) {
     let newPosition;
     const moveNum = parseInt(moveUnits);
@@ -42,19 +39,14 @@ export const processMoveCmd = (
     console.log("R2-D2 tries to move before landing. It's not very effective.");
 };
 
-export const processLeftCmd = gameState => {
+const processLeftCmd = gameState => {
   gameState.direction = getDirectionAtOffset(gameState.direction, -1);
 };
 
-export const processRightCmd = gameState => {
+const processRightCmd = gameState => {
   gameState.direction = getDirectionAtOffset(gameState.direction, 1);
 };
-export const processReportCmd = ({
-  position,
-  direction,
-  kenobi,
-  hasLanded
-}) => {
+const processReportCmd = ({ position, direction, kenobi, hasLanded }) => {
   const r2Report = hasLanded
     ? `R2-D2 is at ${position.x},${position.y} facing ${direction}`
     : "R2-D2 has not landed yet";
@@ -63,7 +55,7 @@ export const processReportCmd = ({
   console.log(`Obi Wan Kenobi is at ${kenobi.x},${kenobi.y}`);
 };
 
-export const processCommand = gameState => line => {
+const processCommand = gameState => line => {
   if (line.length === 0) return; // No input, no problem
   const tokenized = line.split(" ");
   const command = tokenized[0];
@@ -90,3 +82,5 @@ export const processCommand = gameState => line => {
   }
   console.log();
 };
+
+export default processCommand;

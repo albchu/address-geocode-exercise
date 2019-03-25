@@ -1,5 +1,5 @@
 import readline from "readline";
-import { processCommand } from "./processor";
+import processor from "./processor";
 import { initState } from "./state";
 
 const main = async () => {
@@ -11,7 +11,7 @@ const main = async () => {
 
   const gameState = initState();
 
-  rl.on("line", processCommand(gameState));
+  rl.on("line", processor(gameState));
 };
 
 main();
