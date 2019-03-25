@@ -1,5 +1,0 @@
-describe("addressToObject", () => {
-  it("should ", () => {
-    //
-  });
-});
