@@ -1,25 +1,33 @@
 {
-  "name": "address-geocoding",
+  "name": "r2d2-adventure",
   "version": "1.0.0",
   "description": "Ambyint Interview Technical Challenge for Albert Chu",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "start": "node index.js"
+    "test": "jest ./src",
+    "build": "babel --presets es2015 -d lib/ src",
+    "start": "npm run build && node ./lib/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/albchu/address-geocode-exercise.git"
+    "url": "git+https://github.com/albchu/r2d2-adventure-exercise.git"
   },
   "keywords": [
-    "address",
-    "geocode",
-    "decrypt"
+    "interview",
+    "r2d2",
+    "adventure",
+    "exercise"
   ],
   "author": "Albert Chu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/albchu/address-geocode-exercise/issues"
+    "url": "https://github.com/albchu/r2d2-adventure-exercise/issues"
   },
-  "homepage": "https://github.com/albchu/address-geocode-exercise#readme"
+  "homepage": "https://github.com/albchu/r2d2-adventure-exercise#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "jest": "^24.5.0"
+  }
 }
