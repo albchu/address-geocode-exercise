@@ -10,7 +10,12 @@ The year is 1977, Star Wars: A New Hope has just been released. The true hero of
 - Any movement that would result in R2-D2 falling must be prevented, however further valid movement commands must still be allowed
 - On R2-D2 successfully reaching Obi Wan Kenobi we should celebrate our success and exit the application
 
-## Requirements
+## Instructions
+
+```
+npm i
+npm start
+```
 
 #### Acceptable Commands
 
